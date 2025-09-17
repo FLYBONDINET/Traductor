@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Airport Announcer</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0b1220">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="flybondi-logo.svg" alt="Flybondi logo">
+      <span class="tag">Announcer</span>
+    </div>
+    <div class="badge"><span class="dot"></span>Listo para anunciar</div>
+    <button id="installBtn" class="btn ghost" title="Instalar como app" style="display:none;">Instalar</button>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Mensaje</h2>
+      <textarea id="textInput" rows="5" placeholder="Escribí el anuncio... Ej: Embarque para el vuelo FO123 a Córdoba por puerta 5."></textarea>
+      <div class="row">
+        <label class="grow">
+          <span>Idioma del texto</span>
+          <select id="textLang">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+          </select>
+        </label>
+        <label>
+          <span>Leer también en</span>
+          <select id="dualLang">
+            <option value="">— Solo un idioma —</option>
+            <option value="es">Español</option>
+            <option value="en">English</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="row">
+        <label class="grow">
+          <span>Voz (ES)</span>
+          <select id="voiceEs"></select>
+        </label>
+        <label class="grow">
+          <span>Voz (EN)</span>
+          <select id="voiceEn"></select>
+        </label>
+      </div>
+
+      <div class="row sliders">
+        <label><span>Velocidad</span><input type="range" id="rate" min="0.5" max="1.4" step="0.1" value="1"></label>
+        <label><span>Tono</span><input type="range" id="pitch" min="0.5" max="1.5" step="0.1" value="1"></label>
+        <label><span>Volumen</span><input type="range" id="volume" min="0.2" max="1" step="0.1" value="1"></label>
+      </div>
+
+      <div class="row buttons">
+        <button id="speakEs" class="btn primary">Leer en Español</button>
+        <button id="translateSpeak" class="btn">Traducir a Inglés y Leer</button>
+        <button id="speakEn" class="btn">Leer en Inglés</button>
+        <button id="pauseResume" class="btn">Pausar</button>
+        <button id="stop" class="btn danger">Detener</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Atajos de anuncios</h2>
+      <div class="chips" id="presets"></div>
+    </section>
+
+    <section class="card">
+      <h2>Historial</h2>
+      <ul id="history" class="history"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Funciona sin conexión. Usa voces nativas del dispositivo.</span>
+    <a href="#" id="testAudio" class="link">Prueba de audio</a>
+  </footer>
+
+  <audio id="chime" src="audio/chime.wav" preload="auto"></audio>
+  <script src="app.js"></script>
+</body>
+</html>
